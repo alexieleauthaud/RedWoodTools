@@ -11,7 +11,7 @@
 
 * The sky coverage can be found in the following figure: 
 
-![alt text][figure/s16a_wide_gama09_i.png]
+![alt text][https://github.com/alexieleauthaud/RedWoodTools/blob/master/PhotometricCatalog/figure/s16a_wide_gama09_i.png?raw=true]
 
 
 ## HSC Catalog: 
