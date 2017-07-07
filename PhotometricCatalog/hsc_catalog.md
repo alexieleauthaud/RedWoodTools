@@ -13,6 +13,7 @@
 
 ![alt text](https://github.com/alexieleauthaud/RedWoodTools/blob/master/PhotometricCatalog/figure/s16a_wide_gama09_i.png)
 
+-----
 
 ## HSC Catalog:
 
@@ -42,10 +43,19 @@
     - These measurements are in unit of "Solar luminosity" ($3.826\times10^{33}$erg/s)
     - With the help of redshift and the absolute magnitude of the sun in the desired filter, we can convert back to observed magnitude.  (Will show how to do that later)
 
+* Please find the Jupyter notebook that demonstrates how to read this catalog: [here](https://github.com/alexieleauthaud/RedWoodTools/blob/master/PhotometricCatalog/notebook/demo_read_fits_catalog.ipynb)
+
+-----
+
 ## LegacySurvey Catalog:
 
 * We are now using the "sweep" catalog from LegacySurvey Data Release 3
     - The catalogs can be found [here](http://portal.nersc.gov/project/cosmo/data/legacysurvey/dr3/sweep/3.1/)
+    - Please read the description of DECALS catalogs [here](http://legacysurvey.org/dr3/description/)
+
+* Right now, DECALS only has data in three filters
+    - They are `g, r, z` bands.
+    - Although sharing the same name, the response curves of these filters are slightly different with the HSC ones (We need to deal with them later)
 
 * We are using the following catalogs:
     - `sweep-120m005-130p000.fits`
@@ -56,3 +66,18 @@
     - `sweep-140p000-150p005.fits`
 
 * Need to combine these catalogs and extract useful information
+    - The original catalogs are quite large and will not be uploaded here.
+    - Please download the catalog from DeCaLs [here](https://www.dropbox.com/s/wturiwmcdj16t3h/decals_dr3_g09_short.fits?dl=0)
+    - There are **940172** objects in this catalog
+    - **Note that not every object here has useful detection in all three bands.**  For the ones without detection in certain band, the magnitude will become `inf` in Python.
+
+* The useful columns are:
+
+| Column                      | Information               | Unit   |
+| :--------------------------:|:-------------------------:|:------:|
+| `OBJID`                     | Unique ID from DECALS     |        |
+| `TYPE `                     | Object type               |        |
+| `RA, DEC`                   | Coordinate of object      | degree |
+| `a_[g/r/z]_decal`           | Galactic extinction value | mag    |
+| `[g/r/zmag_decal`           | Magnitude of galaxy       | mag    |
+| `[g/r/zflux_ivar_decal`     | Inverse variance of flux  |    |
