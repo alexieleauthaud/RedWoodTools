@@ -81,3 +81,63 @@
 | `a_[g/r/z]_decal`           | Galactic extinction value | mag    |
 | `[g/r/zmag_decal`           | Magnitude of galaxy       | mag    |
 | `[g/r/zflux_ivar_decal`     | Inverse variance of flux  |    |
+
+
+-----
+
+## Cross-Match using Astropy:
+
+* Please read the instruction [here](http://docs.astropy.org/en/stable/coordinates/matchsep.html)
+
+* We need three components from astropy:
+    - `from astropy import units as u`: This is the astropy.unit object; It is pretty easy to use, and you can find more information [here](http://docs.astropy.org/en/stable/units/)
+    - `from astropy.coordinates import SkyCoord`: This is the Astropy object for coordinates.  You can read more about it [here](http://docs.astropy.org/en/stable/coordinates/index.html)
+    - You still need to load the two catalogs using `astropy.table` and you need to identify the column names for (RA, Dec) in both catalog.
+    - And, in case you want to merge the two catalog into one and save it to disk, you need the `hstack` function which merges two catalogs horizontally.
+    - Details about the function (or "method" to be precise) that does the cross-match can be found [here](http://docs.astropy.org/en/stable/api/astropy.coordinates.match_coordinates_sky.html#astropy.coordinates.match_coordinates_sky)
+
+
+```python
+from astropy import units as u
+from astropy.table import Table, hstack
+from astropy.coordinates import SkyCoord
+
+# Let's say we match the DECALS catalog to the HSC ones
+cat_hsc = Table.read(location_of_hsc_catalog, format='fits')
+cat_decals = Table.read(location_of_decals_catalog, format='fits')
+
+# Let's say that the coordinates are stored in these columns:
+#  HSC: ra_hsc, dec_hsc
+#  DECALS: ra_decals, dec_decals
+#  Both of these coordinatess are in unit of degree
+coord_hsc = SkyCoord(ra=cat_hsc['ra_hsc'] * u.degree,
+                     dec=cat_hsc['dec_hsc'] * u.degree)
+coord_decals = SkyCoord(ra=cat_decals['ra_decals'] * u.degree,
+                        dec=cat_decals['dec_decals'] * u.degree)
+
+# Let's do the match
+index_decals, d2d, _ = coord_hsc.match_to_catalog_sky(coord_decals)
+
+# This will find the nearest neighbor of coord_hsc object in coord_decals
+cat_decals_match = cat_decals[index_decals]
+
+# We will only use the ones with distance smaller than, say, 1.0 arcsec
+flag_match = (d2d <= 1.0 * u.arcsec)
+print("# Find %d matches!" % np.sum(flag_match))
+
+# The matched objects from HSC side
+match_hsc = cat_hsc[flag_match]
+match_decals = cat_decals_match[flag_match]
+
+# Now you can generate plots to compare the magnitudes
+# e.g. plt.scatter(match_hsc['rcmodel_mag'] - match_hsc['a_r'],
+#                  match_decals['rmag_decal'] - match_decals['a_r'])
+
+# In case you want to merge the two catalogs and save it
+#  You will see some warnings about the "metadata", don't worry about it
+#  In case there are columns with the same name from both catalogs, their column name
+#  will have suffix "_1" "_2" now
+match_merged = hstack([match_hsc, match_decals])
+match_merged.write('hsc_decals_matched_1.0arcsec.fits', format='fits',
+                    overwrite=True)
+```
