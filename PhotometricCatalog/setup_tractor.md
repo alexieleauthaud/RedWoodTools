@@ -30,6 +30,8 @@
     4. Download and install the `Tractor` code
     5. Run the demos provided by `Tractor`.
 
+----
+
 ### Tips before we start:
 
 * These are just some random comments, you probably know some of these.
@@ -57,6 +59,23 @@
     - [Setting Up an Apple Mac for Software Development](http://www.stuartellis.name/articles/mac-setup/)
     - [Mac OS X Dev Setup](https://github.com/nicolashery/mac-dev-setup)
     - [Setting up a Brand New Mac for Development](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/)
+
+----
+
+### Backup
+
+* This sounds stupid to say, but **Please make sure your works are properly backuped**
+* My strategy is:
+    - Use `TimeMachine` to regularly backup everything.
+    - Use `Dropbox` to backup codes, figures, documents, drafts, and other crucial files.
+    - Use `git` for version control, and backup codes and documents to `GitHub`
+
+----
+
+### Other Softwares
+
+* [SAOImage DS9](http://ds9.si.edu/site/Home.html) is a very useful FITS image viewing tool.
+* [Topcat](http://www.star.bris.ac.uk/~mbt/topcat/) is a very useful to deal with catalogs interactively.
 
 ----
 
@@ -114,6 +133,20 @@
 
 ### Git and GitHub:
 
+* [git](https://www.git-scm.com) is a version controll software.
+    - You should be able to use `homebrew` to install, update, and maintain `git`.
+    - `brew install git` and `brew link --overwrite git` should do the trick.
+
+* You can find many, many documents that teach you how to use `git`. For example:
+    - The official [tutorial videos](https://www.git-scm.com/documentation)
+    - The ["Try Git" free interactive course](https://www.codeschool.com/courses/try-git) from CodeSchool
+
+* [github](https://github.com) is one of the largest on-line version control repository.
+    - You can learn about the basic function of github from the [official document](https://guides.github.com/activities/hello-world/)
+    - Or from the [GitHub Training & Guides YouTube channel](https://www.youtube.com/githubguides)
+
+* There is no better way to learn `git` other than actually using it for your own work.
+
 ----
 
 ### Astrometry.net:
@@ -139,6 +172,20 @@
         ```
     - If everything goes well, you can type `solve-field -h` and see the manual of this function.
 
+* The pre-packaged `astrometry-net` under `homebrew` may have certain issue with the default location for `gsl`, the GNU Scientific Library.
+    - Even `homebrew` manages to install `astrometry-net`, `solve-field` may fail.
+    - In case `brew install gsl` does not solve this problem. Please try the following method.
+    - `brew uninstall --force astrometry-net`
+    - `brew install --HEAD astrometry-net`, and ignore any error message.
+    - Then do this:
+        ``` bash
+        cd Library/Caches/Homebrew/astrometry-net--git
+        make
+        make py
+        make extra
+        make install INSTALL_DIR=/usr/local/
+        ```
+
 * Link the associated Python library to your `PYTHONPATH` environment variable.
     - Put `export PYTHONPATH=$PYTHONPATH":/usr/local/Cellar/astrometry-net/0.70/lib/python/astrometry` in your `.bashrc` or `.zshrc` file under your home directory.
     - After this, you can test the installation under Python:
@@ -152,4 +199,14 @@
 
 ### Finally, Tractor
 
+* In principle, if everything is prepared, installation of `tractor` should be very simple:
+    ```bash
+    git clone git@github.com:dstndstn/tractor.git
+    cd tractor
+    make
+    ```
+    - This should do the trick.
+
 ### Run Demos
+
+* If everything goes well, you should be able to run a demo under `tractor` folder called `mog.py`.  Just type, `python mog.py`, you should see the demo is running, and it will output some files.
