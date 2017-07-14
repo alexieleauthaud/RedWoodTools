@@ -183,11 +183,13 @@
         make
         make py
         make extra
+        make test
         make install INSTALL_DIR=/usr/local/
         ```
 
 * Link the associated Python library to your `PYTHONPATH` environment variable.
-    - Put `export PYTHONPATH=$PYTHONPATH":/usr/local/Cellar/astrometry-net/0.70/lib/python/astrometry` in your `.bashrc` or `.zshrc` file under your home directory.
+    - Put `export PYTHONPATH=$PYTHONPATH":/usr/local/Cellar/astrometry-net/0.70/lib/python/astrometry` in your `.bash_profile` or `.zshrc` file under your home directory.
+    - If you need to do the `brew install --HEAD astrometry-net` step, change the PYTHONPATH to: ```export PYTHONPATH=$PYTHONPATH":~/Library/Caches/Homebrew/astrometry-net--git/```
     - After this, you can test the installation under Python:
         ```Python
         import astrometry
@@ -204,9 +206,12 @@
     git clone git@github.com:dstndstn/tractor.git
     cd tractor
     make
+    python setup.py install
     ```
     - This should do the trick.
+    - You should be able to test the installation by running ```from tractor import *``` under Python
 
 ### Run Demos
 
 * If everything goes well, you should be able to run a demo under `tractor` folder called `mog.py`.  Just type, `python mog.py`, you should see the demo is running, and it will output some files.
+    - If you are using `Python > 3.0`, you will have error from the above test.
