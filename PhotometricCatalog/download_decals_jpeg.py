@@ -41,13 +41,16 @@ def getDecalsCutout(ra, dec, name=None, zoom=13):
                                                       jpgUrl).content))
 
         # Show the figure and save the file
-        fig = plt.figure(figsize=(5, 5))
+        fig = plt.figure(figsize=(6, 6))
         ax1 = fig.add_axes([0.0, 0.0, 1.0, 1.0])
-        ax1.imshow(jpgImg, aspect='auto')
+        ax1.imshow(jpgImg, aspect='auto', interpolation=None,
+                   origin='lower', alpha=1.0)
         ax1.xaxis.set_major_formatter(NullFormatter())
         ax1.yaxis.set_major_formatter(NullFormatter())
 
         fig.savefig('%s.png' % name, format='png')
+
+        plt.close(fig)
 
     except KeyError:
         pass
