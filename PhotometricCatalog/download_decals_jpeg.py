@@ -5,13 +5,8 @@
 
 import os
 import argparse
-#import requests
-#import matplotlib.pyplot as plt
 
-from PIL import Image
-from StringIO import StringIO
 from astropy.table import Table
-from matplotlib.ticker import NullFormatter
 
 DECALS_API = "http://legacysurvey.org/viewer/jpeg-cutout/?"
 
