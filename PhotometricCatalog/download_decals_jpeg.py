@@ -3,9 +3,10 @@
 
 """Get DECALS JPEG Cutout Images."""
 
-import requests
+import os
 import argparse
-import matplotlib.pyplot as plt
+#import requests
+#import matplotlib.pyplot as plt
 
 from PIL import Image
 from StringIO import StringIO
@@ -36,21 +37,13 @@ def getDecalsCutout(ra, dec, name=None, zoom=13):
     try:
         # URL of the JPG file
         jpgUrl = DECALS_API + decalsStr
-        # Get the JPG image
-        jpgImg = Image.open(StringIO(requests.request('GET',
-                                                      jpgUrl).content))
 
-        # Show the figure and save the file
-        fig = plt.figure(figsize=(6, 6))
-        ax1 = fig.add_axes([0.0, 0.0, 1.0, 1.0])
-        ax1.imshow(jpgImg, aspect='auto', interpolation=None,
-                   origin='lower', alpha=1.0)
-        ax1.xaxis.set_major_formatter(NullFormatter())
-        ax1.yaxis.set_major_formatter(NullFormatter())
+        # Name of the JPG file
+        jpgName = '%s.jpg' % name
 
-        fig.savefig('%s.png' % name, format='png')
-
-        plt.close(fig)
+        # Download the JPG file using wget
+        jpgCommand = 'wget "' + jpgUrl + '" -O ' + jpgName
+        os.system(jpgCommand)
 
     except KeyError:
         pass
@@ -85,4 +78,3 @@ if __name__ == '__main__':
                             obj[args.dec_col],
                             name=None,
                             zoom=args.zoom)
-
