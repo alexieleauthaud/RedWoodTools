@@ -17,8 +17,8 @@ def getDecalsCutout(ra, dec, name=None, zoom=13):
     """
 
     if name is None:
-        name = "decals_ra-%s_dec-%sf" % (('%8.4f' % ra).strip(),
-                                         ('%8.4f' % dec).strip())
+        name = "decals_ra-%s_dec-%s" % (('%8.4f' % ra).strip(),
+                                        ('%8.4f' % dec).strip())
 
     # Organize the URL of the JPEG file
     raStr = ("%10.5f" % ra).strip()
