@@ -11,7 +11,7 @@ from astropy.table import Table
 DECALS_API = "http://legacysurvey.org/viewer/jpeg-cutout/?"
 
 
-def getDecalsCutout(ra, dec, name=None, zoom=13):
+def getDecalsCutout(ra, dec, name=None, zoom=13, montage=True):
     """
     Get DECaLS cutout JPEG images.
     """
@@ -61,7 +61,16 @@ def getDecalsCutout(ra, dec, name=None, zoom=13):
         resCommand = 'wget "' + resUrl + '" -O ' + resName
         os.system(resCommand)
 
-    except KeyError:
+        if montage:
+            montageCommand = 'montage %s*.jpg %s_compare.jpg' % (name, name)
+            os.system(montageCommand)
+            os.system("rm imgName")
+            os.system("rm modName")
+            os.system("rm resName")
+
+    except Exception:
+        print("!!!! Warning !!!! ")
+        print("Can not download image for %s" % name)
         pass
 
 
