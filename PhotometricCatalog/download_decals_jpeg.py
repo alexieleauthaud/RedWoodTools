@@ -64,9 +64,9 @@ def getDecalsCutout(ra, dec, name=None, zoom=13, montage=True):
         if montage:
             montageCommand = 'montage %s*.jpg %s_compare.jpg' % (name, name)
             os.system(montageCommand)
-            os.system("rm imgName")
-            os.system("rm modName")
-            os.system("rm resName")
+            os.system("rm %s" % imgName)
+            os.system("rm %s" % modName)
+            os.system("rm %s" % resName)
 
     except Exception:
         print("!!!! Warning !!!! ")
