@@ -1,0 +1,202 @@
+\documentclass[useAMS,usenatbib,twocolumn]{mnras}
+\usepackage{natbib}
+\citestyle{aa}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{rotate}
+\usepackage{hyperref}
+%\usepackage{breakurl}
+\usepackage{url} 
+%\voffset=-0.4in
+
+\newcommand{\cgs}{ ${\rm erg~cm}^{-2}~{\rm s}^{-1}$} 
+\newcommand{\lum}{\rm erg~s$^{-1}$}
+\def\xmm{{XMM-{\it Newton}}}
+\def\chandra{{\it Chandra}}
+
+\newcommand{\redm}{redMaPPer }
+\newcommand{\myemail}{alexie.leauthaud@ipmu.jp}
+\newcommand{\flux}{erg cm$^{-2}$ s$^{-1}$ }
+\newcommand{\mass}{ M_{\sun}}
+
+\newcommand{\etal}{et al.}
+\newcommand{\eg}{{\it e.g.,}}
+\newcommand{\cf}{{\it c.f.}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\etc}{{\it etc.}}
+\newcommand{\sn}{S{\rm /}N}
+\newcommand{\rmd}{{\rm d}}
+\newcommand{\Msol}{\mbox{$M_{\odot}$}}
+\newcommand{\msun}{\mbox{$M_{\odot}$}}
+\newcommand{\Msun}{\mbox{${\bf M_{\odot} }$}}
+\newcommand{\Lsol}{\mbox{$L_{\odot}$}}
+\newcommand{\lsun}{\mbox{$L_{\odot}$}}
+\newcommand{\ergsec}{\mbox{erg s$^{-1}$}}
+\newcommand{\sm}{$~{\rm M}_{\odot}$~}
+\newcommand{\hmsol}{$h~{\rm M}_{\odot}$~}
+
+\newcommand{\cm}{\ensuremath{\mathrm{cm}}}
+\newcommand{\km}{\ensuremath{\mathrm{km}}}
+\newcommand{\kms}{\ensuremath{\mathrm{km\,s}^{-1}}}
+
+\newcommand{\pc}{\ensuremath{\mathrm{pc}}}
+\newcommand{\kpc}{\ensuremath{\mathrm{kpc}}}
+\newcommand{\Mpc}{\ensuremath{\mathrm{Mpc}}}
+\newcommand{\Gpc}{\ensuremath{\mathrm{Gpc}}}
+\newcommand{\Angs}{\ensuremath{\text{\AA}}}
+
+\newcommand{\Msolar}{\ensuremath{\mathrm{M}_\odot}}
+\newcommand{\Lsolar}{\ensuremath{\mathrm{L}_\odot}}
+
+\newcommand{\ds}{\ensuremath{\Delta\Sigma}}
+\newcommand{\photoz}{photo-$z$~}
+\newcommand{\photozs}{photo-$z$s~}
+\newcommand{\zphot}{\ensuremath{z_\mathrm{phot}}}
+\newcommand{\dsrand}{\ensuremath{\Delta\Sigma_\mathrm{rand}}}
+\newcommand{\dsx}{\ensuremath{\Delta\Sigma_\times}}
+\newcommand{\h}{\ensuremath{h^{-1}}~}
+\def\lcdm{\Lambda{\rm CDM}}
+
+\def\C#1{{\bf #1}}
+
+\newcommand{\textcol}{\textcolor{black}{}}
+
+% For US letter size
+%\special{papersize=8.5in,11in}
+%\setlength{\pdfpageheight}{\paperheight}
+%\setlength{\pdfpagewidth}{\paperwidth}
+%\setlength{\topmargin}{0.5in} 
+ 
+%-------- BEGIN DOC  ---------------------
+ 
+ \begin{document}
+  
+%-------- TITLE  ---------------------
+
+
+\title[nice title]{Nice Title}
+
+
+
+ %% LaTeX will automatically break titles if they run longer than
+ %% one line. However, you may use \\ to force a line break if
+ %% you desire.
+
+%-------- AUTHORS  ---------------------
+
+ %% Use \author, \affil, and the \and command to format
+ %% author and affiliation information.
+ %% Note that \email has replaced the old \authoremail command
+ %% from AASTeX v4.0. You can use \email to mark an email address
+ %% anywhere in the paper, not just in the front matter.
+ %% As in the title, use \\ to force line breaks.
+
+%% you might have to use the \newauthor command to break the lines of author names
+ \author[someone et al.]  {your name$^{1}$\newauthor
+\\
+$^1$Department of Astronomy and Astrophysics, University of California, Santa Cruz, 1156 High Street, Santa Cruz, CA 95064 USA}
+
+
+\maketitle
+\label{firstpage}
+
+%-------- ABSTRACT  ---------------------
+ 
+\begin{abstract} This paper is awesome \end{abstract}
+
+ 
+\begin{keywords}
+cosmology: observations -- gravitational lensing -- large-scale structure of Universe
+\end{keywords}
+ 
+%-------- KEY WORDS  ---------------------
+
+ %% Keywords should appear after the \end{abstract} command. The uncommented
+ %% example has been keyed in ApJ style. See the instructions to authors
+ %% for the journal to which you are submitting your paper to determine
+ %% what keyword punctuation is appropriate.
+ 
+%\keywords{cosmology: observations -- gravitational lensing -- large-scale
+%structure of Universe}
+ 
+ %% Authors who wish to have the most important objects in their paper
+ %% linked in the electronic edition to a data center may do so by tagging
+ %% their objects with \objectname{} or \object{}.  Each macro takes the
+ %% object name as its required argument. The optional, square-bracket 
+ %% argument should be used in cases where the data center identification
+ %% differs from what is to be printed in the paper.  The text appearing 
+ %% in curly braces is what will appear in print in the published paper. 
+ %% If the object name is recognized by the data centers, it will be linked
+ %% in the electronic edition to the object data available at the data centers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\clearpage
+
+\section{Introduction}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     A Section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{A section}\label{thissection}
+
+% Example of how to include a figure 
+%\begin{figure*}
+%\begin{center}
+%\includegraphics[width=18cm]{bpz_zphot_zspec.eps}
+%\caption{a caption}
+%\label{zphotzspec}
+%\end{center}
+%\end{figure*}
+
+
+% Example of a Table
+%\begin{table*}
+%  \caption{a caption}
+%\begin{tabular}{@{}cccccc}
+%\hline
+%Bin number &R [h$^{-1}$ Mpc] & $\Delta\Sigma$ [h M$_{\odot}$
+%pc$^{-2}$]&$\Delta\Sigma$  [h M$_{\odot}$ pc$^{-2}$] & $\Delta\Sigma$  [h M$_{\odot}$ pc$^{-2}$]&
+%$\Delta\Sigma$  [h M$_{\odot}$ pc$^{-2}$]\\
+%&&$0.43<z<0.7$&$0.43<z<0.51$& $0.51<z<0.57$& $0.57<z<0.7$\\
+%\hline
+%1&0.05&$67.16\pm16.77$&$67.95\pm25.50$&$73.43\pm23.01$&$57.03\pm29.74$\\
+%2&0.08&$58.98\pm6.73$&$54.83\pm10.58$&$63.67\pm13.04$&$59.08\pm14.40$\\
+%\hline
+%\end{tabular}
+%\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Discussion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}\label{discussion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     CONCLUSIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary and Conclusions}\label{conclusions}
+
+
+\section*{Acknowledgements}
+
+
+  
+  
+
+
+
+ %-------------- BIBLIO -------------------------------------------------------
+
+\bibliographystyle{mnras}
+\bibliography{mn-jour,all_refs}
+\label{lastpage}
+
+ %-----------------------------------------------------------------------------
+
+\end{document}
